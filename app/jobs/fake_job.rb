@@ -1,4 +1,4 @@
-class FakeJob < ApplicatAionJob
+class FakeJob < ApplicationJob
   queue_as :default
 
   def perform
