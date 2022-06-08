@@ -9,6 +9,6 @@ class User < ApplicationRecord
   private
 
   def async_update
-    UpdateUserJob.perform_later(self)
+    UpdateUserJob.perform_now(self)
   end
 end
