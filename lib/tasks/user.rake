@@ -9,4 +9,11 @@ namespace :user do
     # rake task will return when all jobs are _enqueued_ (not done).
   end
 
+  desc "Enrich a given user with Clearbit (sync)"
+  task :update, [:user_id] => :environment do |t, args|
+    user = User.find(args[:user_id])
+    puts "Enriching #{user.email}..."
+    UpdateUserJob.perform_now(user)
+    # rake task will return when job is _done_
+  end
 end
